@@ -1,7 +1,7 @@
-version: '3.4'
+version: '3.6'
 services:
   db:
-    image: postgres:12
+    image: planqk/initialized-db:latest
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -10,6 +10,12 @@ services:
       - "5432:5432"
     networks:
       - default
+    secrets:
+      - source: ssh_secret
+        target: ssh_secret
 networks:
   default:
     driver: bridge
+secrets:
+  ssh_secret:
+    file: ./planqk-atlas-content-ssh_secret

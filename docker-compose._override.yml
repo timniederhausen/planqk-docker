@@ -1,0 +1,12 @@
+version: '3.6'
+services:
+  db:
+    secrets:
+      - source: ssh_secret
+        target: ssh_secret
+
+secrets:
+  ssh_secret:
+# For the override file to work, this ssh key file must be present
+# (refer to https://github.com/PlanQK/planqk-atlas-content/blob/master/README.md for further infomation)
+    file: ./planqk-atlas-content-ssh_secret
